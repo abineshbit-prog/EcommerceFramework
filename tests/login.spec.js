@@ -17,6 +17,5 @@ let password = userData.password;
 test("login to saucedemo", async ({ page }) => {
     let login = new Login(page);
     await login.LoginToSauceDemo(url, username, password)
-    await login.LoginToSauceDemo(url, username, password)
-    await login.LoginToSauceDemo(url, username, password)
+    
 });
