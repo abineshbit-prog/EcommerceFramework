@@ -1,21 +1,18 @@
-
 import { test } from "@playwright/test";
-import Login from "../POM/Loginpage.js";
+import LoginPage from "../POM/LoginPage";
+
 import fs from "fs";
 
-let userData = fs.readFileSync(
-    "C:/Users/Abinesh Bala/OneDrive/Documents/Desktop/Sauce demo/EcommerceFramework/Test-Data/login.json",
-    "utf8"
-);
+let userdata = JSON.parse(
+    fs.readFileSync("Test-Data/Login.json", "utf-8")
+)
 
-userData = JSON.parse(userData);
+let url = userdata.url;
+let username = userdata.username;
+let password = userdata.password;
 
-let url = userData.url;
-let username = userData.username;
-let password = userData.password;
-
-test("login to saucedemo", async ({ page }) => {
-    let login = new Login(page);
-    await login.LoginToSauceDemo(url, username, password)
-    
+test("login to sauce demo", async ({ page }) => {
+    let login = new LoginPage(page);
+    await login.Logintosaucedemo(url, username, password);
+    await login.Logintosaucedemo(url, username, password);
 });
